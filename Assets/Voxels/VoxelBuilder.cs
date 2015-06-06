@@ -18,7 +18,7 @@ public class VoxelBuilder : MonoBehaviour {
 				obj.SetParent(transform);
 
 				// foo data
-				var f = Random.Range(0.1f, 2f);
+				var f = Random.Range(0.1f, 6f) * Random.Range(0f, 1f);
 				obj.GetComponent<VoxelCtrl>().SetValue(f);
 			}
 		}

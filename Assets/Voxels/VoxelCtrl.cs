@@ -6,6 +6,12 @@ public class VoxelCtrl : MonoBehaviour {
 	float dampedValue = 0f;
 	float speed = 4f;
 
+	void Start () {
+		var color = GetComponentInChildren<Renderer>().material.color;
+		color *= Random.Range(0.3f,0.9f);
+		GetComponentInChildren<Renderer>().material.color = color;
+	}
+
 	public void SetValue(float f) {
 		value = f;
 	}

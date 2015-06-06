@@ -12,9 +12,9 @@ public class VoxelBuilder : MonoBehaviour {
 
 	void Build () {
 		for(int x = 0; x < xSize; x++){
-			for(int z = 0; z < xSize; z++){
+			for(int z = 0; z < zSize; z++){
 				var pos = new Vector3(x, 0, z);
-				var obj = (Transform) Instantiate (voxelPrefab, pos, Quaternion.identity);
+				var obj = (Transform) Instantiate(voxelPrefab, pos, Quaternion.identity);
 				obj.SetParent(transform);
 
 				// foo data

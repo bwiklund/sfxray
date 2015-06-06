@@ -4,7 +4,7 @@ using System.Collections;
 public class VoxelCtrl : MonoBehaviour {
 	float value = 0f;
 	float dampedValue = 0f;
-	float speed = 4f;
+	float speed = 1f;
 
 	void Start () {
 		var color = GetComponentInChildren<Renderer>().material.color;

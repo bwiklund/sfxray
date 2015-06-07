@@ -8,12 +8,12 @@ using System.Text.RegularExpressions;
 public class KMLParser : DatapointLoader {
 
 	public override List<Datapoint> Load () {
-		return Parse ("/Users/ben/Downloads/POPOS/POPOS.kml");
+		return Parse ("/SFRAY/POPOS.kml");
 	}
 
 	List<Datapoint> Parse(string filename) {
 		XNamespace ns = "http://earth.google.com/kml/2.2";
-		var xdoc = XDocument.Load("/Users/ben/Downloads/POPOS/POPOS.kml");
+		var xdoc = XDocument.Load(filename);
 		var placemarkQuery = xdoc.Root.Element(ns + "Document").Elements(ns + "Placemark");
 		var placemarks = placemarkQuery.Select( x => {
 			var coordinatesStr = x.Element(ns + "Point").Element (ns + "coordinates").Value;

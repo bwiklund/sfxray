@@ -2,14 +2,11 @@
 using System.Collections;
 
 public class UserControlPanel : MonoBehaviour {
+	public Transform[] datasets;
 
-	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		foreach (var dataset in datasets) {
+			dataset.GetComponent<BaseDatasetPresenter>().EnterScene();
+		}
 	}
 }

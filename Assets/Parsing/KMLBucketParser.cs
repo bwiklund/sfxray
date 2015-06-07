@@ -52,8 +52,6 @@ public class KMLBucketParser : DatapointLoader {
 			var coordinatesArr = Regex.Split(coordinatesStr, " ");
 
 			var sumvector = new Vector3();
-			Debug.Log ("Loading point");
-			Debug.Log (coordinatesArr);
 			foreach (string coordinates in coordinatesArr) {
 				var coordArr = Regex.Split (coordinates, ",");
 				sumvector.x = sumvector.x + float.Parse (coordArr[0]);

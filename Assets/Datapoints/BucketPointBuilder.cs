@@ -13,24 +13,30 @@ public class BucketPointBuilder : MonoBehaviour {
 		var datapoints = GetComponent<DatapointLoader>().Load ();
 
 		Dictionary<string, Datapoint> datapoint_map = new Dictionary<string, Datapoint> ();
-		for (int i = 0; i < datapoints.Count; i++) {
+		var max_size = 0f;
 
+		for (int i = 0; i < datapoints.Count; i++) {
 			var datapoint = datapoints[i];
 			//			var pos = (Random.insideUnitSphere + new Vector3(0.5f, 0.5f, 0.5f)) * 16f;
 			var dpstring = datapoint.position.x.ToString() + ":" + datapoint.position.y.ToString () + ":" + datapoint.position.z.ToString();
 			if (datapoint_map.ContainsKey(dpstring)) {
-				datapoint.size += 1f;
+				datapoint_map[dpstring].size += 1f;
+				if (datapoint_map[dpstring].size > max_size) {
+					max_size = datapoint_map[dpstring].size;
+				}
 			} else {
 				datapoint_map.Add (dpstring, datapoint);
 			}
 		}
-		Debug.Log (datapoint_map.Count);
+
+		// max_size * x = 3
+		float multiplier = 10/max_size;
 
 		foreach (KeyValuePair<string, Datapoint> pair in datapoint_map) {
 			var datapoint = pair.Value;
 			var instance = (Transform) Instantiate(datapointPrefab, datapoint.position, Quaternion.identity);
-			instance.transform.localScale = new Vector3(0.1f, datapoint.size * 2f, 0.1f);
-			instance.transform.localPosition += new Vector3(0f, datapoint.size, 0f);
+			instance.transform.localScale = new Vector3(0.1f, -1 *datapoint.size * multiplier, 0.1f);
+			instance.transform.localPosition = new Vector3(instance.transform.localPosition.x, 0f + 0.1f, instance.transform.localPosition.z);
 			instance.SetParent(transform);
 		}
 	}

@@ -29,7 +29,7 @@ public class BucketPointBuilder : BaseDatasetPresenter {
 		}
 
 		// max_size * x = 3
-		float multiplier = 10/max_size;
+		float multiplier = 5/max_size;
 
 		foreach (KeyValuePair<string, Datapoint> pair in datapoint_map) {
 			var datapoint = pair.Value;

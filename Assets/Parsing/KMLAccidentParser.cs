@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 public class KMLAccidentParser : DatapointLoader {
 	
 	public override List<Datapoint> Load () {
-		return Parse ("/Users/ben/Downloads/POPOS/POPOS.kml");
+		return Parse ("/SFXRAY/accidents.xml");
 	}
 	
 	private Vector3 voxelize(Vector3 vect) {
@@ -24,7 +24,7 @@ public class KMLAccidentParser : DatapointLoader {
 	}
 	
 	List<Datapoint> Parse(string filename) {
-		var xdoc = XDocument.Load("/Users/darksunrose/Desktop/accidents.xml");
+		var xdoc = XDocument.Load(filename);
 		Debug.Log ("XML IS: ");
 		Debug.Log (xdoc.Root.Element ("row"));
 		var placemarkQuery = xdoc.Root.Element ("row").Elements ("row");

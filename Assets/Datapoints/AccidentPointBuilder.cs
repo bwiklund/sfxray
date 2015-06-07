@@ -2,28 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AccidentPointBuilder : MonoBehaviour {
+public class AccidentPointBuilder : BaseDatasetPresenter {
 	public Transform datapointPrefab;
 	
-	void Start () {
-		Build();
-	}
-
-	void MakeParticles (Vector3 pos, List<ParticleSystem.Particle> particles) {
-
-		var particle = new ParticleSystem.Particle () {
-			position = pos,
-			size = 0.05f,
-			color = new Color(190f,90f,140f),
-			startLifetime = 1000f,
-			lifetime = 1000f
-		};
-		particles.Add (particle);
-	}
-	
-
-	
-	void Build () {
+	public void EnterScene () {
 		var datapoints = GetComponent<DatapointLoader>().Load ();
 
 		List<ParticleSystem.Particle> particles = new List<ParticleSystem.Particle>();
@@ -37,4 +19,16 @@ public class AccidentPointBuilder : MonoBehaviour {
 		pSys.SetParticles(particles.ToArray(), particles.Count);
 
 	}
+	
+	void MakeParticles (Vector3 pos, List<ParticleSystem.Particle> particles) {
+		var particle = new ParticleSystem.Particle () {
+			position = pos,
+			size = 0.05f,
+			color = new Color(190f,90f,140f),
+			startLifetime = 1000f,
+			lifetime = 1000f
+		};
+		particles.Add (particle);
+	}
+
 }

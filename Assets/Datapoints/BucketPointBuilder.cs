@@ -9,7 +9,7 @@ public class BucketPointBuilder : BaseDatasetPresenter {
 		EnterScene ();
 	}
 	
-	void EnterScene () {
+	public void EnterScene () {
 		var datapoints = GetComponent<DatapointLoader>().Load ();
 
 		Dictionary<string, Datapoint> datapoint_map = new Dictionary<string, Datapoint> ();

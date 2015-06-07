@@ -3,11 +3,11 @@
 // a small base class for consitent control of different datasets
 public class BaseDatasetPresenter : MonoBehaviour {
 	
-	public void EnterScene () {
-		
+	public virtual void EnterScene () {
+
 	}
 
-	public void ExitScene () {
+	public virtual void ExitScene () {
 		
 	}
 }

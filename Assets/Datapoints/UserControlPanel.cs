@@ -6,7 +6,7 @@ public class UserControlPanel : MonoBehaviour {
 
 	void Start () {
 		foreach (var dataset in datasets) {
-			dataset.GetComponent<BaseDatasetPresenter>().EnterScene();
+			dataset.SendMessage ("EnterScene");
 		}
 	}
 }

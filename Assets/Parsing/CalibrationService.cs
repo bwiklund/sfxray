@@ -36,8 +36,6 @@ public class CalibrationService : MonoBehaviour {
 		
 		Debug.Log(transformOffset);
 		Debug.Log(transformScale);
-
-		var flip = new Vector3(1f, 1f, -1f);
 	}
 
 	public Vector3 LatLonToGameSpace (Vector3 position) {

@@ -12,8 +12,6 @@ public class KMLParser : DatapointLoader {
 	}
 
 	List<Datapoint> Parse(string filename) {
-		//!
-
 		XNamespace ns = "http://earth.google.com/kml/2.2";
 		var xdoc = XDocument.Load("/Users/ben/Downloads/POPOS/POPOS.kml");
 		var placemarkQuery = xdoc.Root.Element(ns + "Document").Elements(ns + "Placemark");

@@ -35,4 +35,10 @@ public class BucketPointBuilder : BaseDatasetPresenter {
 			instance.SetParent(transform);
 		}
 	}
+	
+	public void ExitScene () {
+		foreach (Transform child in transform) {
+			Destroy(child.gameObject);
+		}	
+	}
 }

@@ -30,5 +30,8 @@ public class AccidentPointBuilder : BaseDatasetPresenter {
 		};
 		particles.Add (particle);
 	}
-
+	
+	public void ExitScene () {
+		GetComponent<ParticleSystem>().Clear ();
+	}
 }

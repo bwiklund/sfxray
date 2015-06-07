@@ -26,6 +26,6 @@ public class PlayerMovement : MonoBehaviour {
 			v_mov *
 			this.trackedObject.transform.forward;
 
-		Debug.Log (this.transform.position);
+		//Debug.Log (this.transform.position);
 	}
 }

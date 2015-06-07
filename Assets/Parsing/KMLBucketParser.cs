@@ -32,8 +32,8 @@ public class KMLBucketParser : DatapointLoader {
 		var transformScale = gameDistance / worldDistance;
 		var transformOffset = leftCalibrationPointGameSpace - (leftCalibrationPointLatLon * transformScale);
 		
-		Debug.Log(transformOffset);
-		Debug.Log(transformScale);
+		//Debug.Log(transformOffset);
+		//Debug.Log(transformScale);
 		
 		// TODO: make a static util for converting latlon to game space for other uses
 		//		var topLeft = new Vector3(-122.554379f, 0f, 37.814353f);
@@ -41,21 +41,24 @@ public class KMLBucketParser : DatapointLoader {
 		//		var gameScale = 32f;
 		var flip = new Vector3(1f, 1f, -1f);
 		
-		XNamespace ns = "http://earth.google.com/kml/2.2";
+		XNamespace ns = "http://www.opengis.net/kml/2.2";
 		var xdoc = XDocument.Load("/Users/darksunrose/Hackathons/sfxray/Assets/DataSets/rentburden.kml");
-		var placemarkQuery = xdoc.Root.Element (ns + "Document").
-			Elements (ns + "Placemark");
+		var placemarkQuery = xdoc.Root.Element (ns + "Document").Element (ns + "Folder").Elements (ns + "Placemark");
 
 		var placemarks = placemarkQuery.Select( x => {
-			var coordinatesStr = x.Element(ns + "Multigeometry").Element (ns + "Polygon").Element(ns + "coordinates").Value;
+			var coord = x.Element(ns + "MultiGeometry").Element (ns + "Polygon").Element (ns + "coordinates");
+			Debug.Log (coord);
+			var coordinatesStr = x.Element(ns + "MultiGeometry").Element (ns + "Polygon").Element (ns + "outerBoundaryIs").Element (ns + "LinearRing").Element(ns + "coordinates").Value;
 			var coordinatesArr = Regex.Split(coordinatesStr, " ");
 
 			var sumvector = new Vector3();
+			Debug.Log ("Loading point");
+			Debug.Log (coordinatesArr);
 			foreach (string coordinates in coordinatesArr) {
 				var coordArr = Regex.Split (coordinates, ",");
 				sumvector.x = sumvector.x + float.Parse (coordArr[0]);
-				sumvector.y = sumvector.y + float.Parse (coordArr[2]);
-				sumvector.z = 0f;
+				sumvector.y = 0f;
+				sumvector.z = sumvector.z + float.Parse (coordArr[1]);
 
 			}
 			var position = new Vector3(
@@ -63,16 +66,6 @@ public class KMLBucketParser : DatapointLoader {
 				(float)(sumvector.y / coordinatesArr.Length),
 			    (float)(sumvector.z / coordinatesArr.Length)
 			);
-
-			Debug.Log(position);
-
-			/*
-			var position = new Vector3(
-				float.Parse(coordinatesArr[0]),
-				float.Parse(coordinatesArr[2]),
-				float.Parse(coordinatesArr[1])
-			);
-			*/
 
 			var transformedPosition = (position * transformScale) + transformOffset;
 			//			transformedPosition.Scale(flip);

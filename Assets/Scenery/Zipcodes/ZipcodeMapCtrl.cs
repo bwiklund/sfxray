@@ -10,7 +10,9 @@ public class ZipcodeMapCtrl : MonoBehaviour {
 
 	void Randomize () {
 		foreach (Transform child in mapTransform) {
-			child.localScale = new Vector3(1f, 1f, Random.Range(1f, 2f));
+			var scale = child.localScale;
+			scale.Scale(new Vector3(1f, 1f, Random.Range(1f, 2f)));
+			child.localScale = scale;
 		}
 	}
 }

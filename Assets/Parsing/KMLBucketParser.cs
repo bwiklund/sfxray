@@ -6,7 +6,6 @@ using System.Xml.Linq;
 using System.Text.RegularExpressions;
 
 public class KMLBucketParser : DatapointLoader {
-	public Transform leftCalibrationPoint, rightCalibrationPoint;
 	
 	public override List<Datapoint> Load () {
 		return Parse ("/Users/ben/Downloads/POPOS/POPOS.kml");

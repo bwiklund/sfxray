@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class BucketPointBuilder : BaseDatasetPresenter {
 	public Transform datapointPrefab;
+
+	void Start() {
+		EnterScene ();
+	}
 	
 	void EnterScene () {
 		var datapoints = GetComponent<DatapointLoader>().Load ();
@@ -13,7 +17,6 @@ public class BucketPointBuilder : BaseDatasetPresenter {
 
 		for (int i = 0; i < datapoints.Count; i++) {
 			var datapoint = datapoints[i];
-			//			var pos = (Random.insideUnitSphere + new Vector3(0.5f, 0.5f, 0.5f)) * 16f;
 			var dpstring = datapoint.position.x.ToString() + ":" + datapoint.position.y.ToString () + ":" + datapoint.position.z.ToString();
 			if (datapoint_map.ContainsKey(dpstring)) {
 				datapoint_map[dpstring].size += 1f;

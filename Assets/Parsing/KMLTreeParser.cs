@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 public class KMLTreeParser : DatapointLoader {
 
 	public override List<Datapoint> Load () {
-		return Parse ("/Users/ben/Downloads/POPOS/POPOS.kml");
+		return Parse ("/SFXRAY/trees.kml");
 	}
 
 	private Vector3 voxelize(Vector3 vect) {
@@ -25,7 +25,7 @@ public class KMLTreeParser : DatapointLoader {
 	List<Datapoint> Parse(string filename) {
 		
 		XNamespace ns = "http://www.opengis.net/kml/2.2";
-		var xdoc = XDocument.Load("/Users/darksunrose/Desktop/trees.kml");
+		var xdoc = XDocument.Load(filename);
 		var placemarkQuery = xdoc.Root.Element (ns + "Document").Element (ns + "Folder").Elements (ns + "Placemark");
 
 		var placemarks = placemarkQuery.Select( x => {

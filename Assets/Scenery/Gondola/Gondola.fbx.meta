@@ -12,6 +12,7 @@ ModelImporter:
     100008: Torus
     100010: Torus.001
     100012: Torus.002
+    100014: Cylinder.001
     400000: //RootNode
     400002: Cylinder
     400004: Empty
@@ -19,21 +20,25 @@ ModelImporter:
     400008: Torus
     400010: Torus.001
     400012: Torus.002
+    400014: Cylinder.001
     2300000: //RootNode
     2300002: Cylinder
     2300004: Sphere
     2300006: Torus
     2300008: Torus.001
     2300010: Torus.002
+    2300012: Cylinder.001
     3300000: //RootNode
     3300002: Cylinder
     3300004: Sphere
     3300006: Torus
     3300008: Torus.001
     3300010: Torus.002
+    3300012: Cylinder.001
     4300000: Cylinder
     4300002: Torus.002
     4300004: Sphere
+    4300006: Cylinder.001
   materials:
     importMaterials: 1
     materialName: 0

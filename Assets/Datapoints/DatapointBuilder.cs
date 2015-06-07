@@ -1,14 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DatapointBuilder : MonoBehaviour {
+public class DatapointBuilder : BaseDatasetPresenter {
 	public Transform datapointPrefab;
 
-	void Start () {
-		Build();
-	}
-
-	void Build () {
+	void EnterScene () {
 		var datapoints = GetComponent<DatapointLoader>().Load ();
 		for (int i = 0; i < datapoints.Count; i++) {
 			var datapoint = datapoints[i];

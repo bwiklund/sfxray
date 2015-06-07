@@ -2,14 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BucketPointBuilder : MonoBehaviour {
+public class BucketPointBuilder : BaseDatasetPresenter {
 	public Transform datapointPrefab;
 	
-	void Start () {
-		Build();
-	}
-	
-	void Build () {
+	void EnterScene () {
 		var datapoints = GetComponent<DatapointLoader>().Load ();
 
 		Dictionary<string, Datapoint> datapoint_map = new Dictionary<string, Datapoint> ();

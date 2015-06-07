@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VoxelBuilder : MonoBehaviour {
+public class VoxelBuilder : BaseDatasetPresenter {
 	public Transform voxelPrefab;
 
 	int xSize = 16, zSize = 16;

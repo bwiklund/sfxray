@@ -2,12 +2,14 @@
 
 // a small base class for consitent control of different datasets
 public class BaseDatasetPresenter : MonoBehaviour {
-	
-	public virtual void EnterScene () {
+	bool isEnabled = false;
 
-	}
-
-	public virtual void ExitScene () {
-		
+	public void Toggle () {
+		isEnabled = !isEnabled;
+		if (isEnabled) {
+			SendMessage("EnterScene");
+		} else {
+			SendMessage("ExitScene");
+		}
 	}
 }

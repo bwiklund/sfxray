@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 public class KMLParser : DatapointLoader {
 
 	public override List<Datapoint> Load () {
-		return Parse ("/SFRAY/POPOS.kml");
+		return Parse ("/SFXRAY/POPOS.kml");
 	}
 
 	List<Datapoint> Parse(string filename) {

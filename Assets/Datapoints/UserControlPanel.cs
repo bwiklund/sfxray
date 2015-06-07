@@ -5,8 +5,16 @@ public class UserControlPanel : MonoBehaviour {
 	public Transform[] datasets;
 
 	void Start () {
-		foreach (var dataset in datasets) {
-			dataset.SendMessage ("EnterScene");
-		}
+//		datasets[0].SendMessage ("EnterScene");
+//		foreach (var dataset in datasets) {
+//			dataset.SendMessage ("EnterScene");
+//		}
+	}
+
+	void Update () {
+		if(Input.GetKeyDown(KeyCode.Q)) datasets[0].SendMessage ("Toggle");
+		if(Input.GetKeyDown(KeyCode.W)) datasets[1].SendMessage ("Toggle");
+		if(Input.GetKeyDown(KeyCode.E)) datasets[2].SendMessage ("Toggle");
+		if(Input.GetKeyDown(KeyCode.R)) datasets[3].SendMessage ("Toggle");
 	}
 }

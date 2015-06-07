@@ -4,10 +4,6 @@ using System.Collections.Generic;
 
 public class BucketPointBuilder : BaseDatasetPresenter {
 	public Transform datapointPrefab;
-
-	void Start() {
-		EnterScene ();
-	}
 	
 	public void EnterScene () {
 		var datapoints = GetComponent<DatapointLoader>().Load ();

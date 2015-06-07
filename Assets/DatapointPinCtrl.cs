@@ -8,6 +8,6 @@ public class DatapointPinCtrl : MonoBehaviour {
 	}
 
 	void Randomize(){
-		transform.position += new Vector3(0f, Random.Range (0f, -1f), 0f);
+		transform.position += new Vector3(0f, Random.Range (0f, -0.3f), 0f);
 	}
 }

@@ -23,8 +23,8 @@ public class AccidentPointBuilder : BaseDatasetPresenter {
 	void MakeParticles (Vector3 pos, List<ParticleSystem.Particle> particles) {
 		var particle = new ParticleSystem.Particle () {
 			position = pos,
-			size = 0.05f,
-			color = new Color(190f,90f,140f),
+			size = 0.02f,
+			color = new Color(0.8f,0.1f,0.1f),
 			startLifetime = 1000f,
 			lifetime = 1000f
 		};

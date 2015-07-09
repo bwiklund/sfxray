@@ -7,7 +7,7 @@ public class ObjParticleBehaviour : MonoBehaviour {
   List<Vector3> points, textPoints, year1, year2, skull;
 
   void Start() {
-    points = new ObjToParticles { filepath = "/particles/Scaled/Scaled.obj" }.Load(0.1f);
+    points = new ObjToParticles { filepath = "/particles/Scaled/Scaled.obj" }.Load(0.03f);
     textPoints = new ObjToParticles { filepath = "/particles/SanFrancisco/SanFrancisco.obj" }.Load(1f);
     year1 = new ObjToParticles { filepath = "/particles/0000/0000.obj" }.Load(1f);
     year2 = new ObjToParticles { filepath = "/particles/2015/2015.obj" }.Load(1f);
@@ -31,7 +31,10 @@ public class ObjParticleBehaviour : MonoBehaviour {
   void Update() {
     var pSystem = GetComponent<ParticleSystem>();
 
-    var tornadoKey = Input.GetKey(KeyCode.Space);
+    var brakeKey = Input.GetKey(KeyCode.Space);
+    var galaxyKey = Input.GetKey(KeyCode.Z);
+    var tornadoKey = Input.GetKey(KeyCode.X);
+
     var sfKey = Input.GetKey(KeyCode.Q);
     var sphereKey = Input.GetKey(KeyCode.W);
     var textKey = Input.GetKey(KeyCode.E);
@@ -46,6 +49,13 @@ public class ObjParticleBehaviour : MonoBehaviour {
 
       if (tornadoKey) {
         var direction = Quaternion.AngleAxis(135f, Vector3.up) * particle.position;
+        particle.velocity += direction.normalized * Time.deltaTime * 0.5f;
+        particle.velocity *= 0.9f;
+      }
+
+      if (galaxyKey) {
+        var direction = Quaternion.AngleAxis(160f, Vector3.up) * particle.position;
+        direction.y *= -0.5f;
         particle.velocity += direction.normalized * Time.deltaTime * 0.5f;
         particle.velocity *= 0.9f;
       }
@@ -70,6 +80,10 @@ public class ObjParticleBehaviour : MonoBehaviour {
           Mathf.Sin(angle) * Mathf.Cos(v)
         ) * radius;
         particle.position = Vector3.Lerp(particle.position, spherePos, 0.5f);
+      }
+
+      if (brakeKey) {
+        particle.velocity *= 0.9f;
       }
 
       particles[i] = particle;

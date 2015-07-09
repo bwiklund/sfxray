@@ -30,6 +30,7 @@ public class ObjParticleBehaviour : MonoBehaviour {
   void Update() {
     var pSystem = GetComponent<ParticleSystem>();
 
+    var tornadoKey = Input.GetKey(KeyCode.Space);
     var sfKey = Input.GetKey(KeyCode.Q);
     var sphereKey = Input.GetKey(KeyCode.W);
     var textKey = Input.GetKey(KeyCode.E);
@@ -40,6 +41,13 @@ public class ObjParticleBehaviour : MonoBehaviour {
     pSystem.GetParticles(particles);
     for (int i = 0; i < particles.Length; i++) {
       var particle = particles[i];
+
+      if (tornadoKey) {
+        var direction = Quaternion.AngleAxis(135f, Vector3.up) * particle.position;
+        particle.velocity += direction.normalized * Time.deltaTime * 0.5f;
+        particle.velocity *= 0.9f;
+      }
+
       particle.velocity += 0.02f * Time.deltaTime * Random.insideUnitSphere;
       particle.position += particle.velocity;
       particle.velocity *= (1f - Time.deltaTime);
